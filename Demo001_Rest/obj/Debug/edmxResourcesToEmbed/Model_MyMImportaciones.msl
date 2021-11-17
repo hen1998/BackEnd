@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FACTURACION_MYMModelStoreContainer" CdmEntityContainer="FACTURACION_MYMEntities">
+    <EntitySetMapping Name="CLIENTE">
+      <EntityTypeMapping TypeName="FACTURACION_MYMModel.CLIENTE">
+        <MappingFragment StoreEntitySet="CLIENTE">
+          <ScalarProperty Name="CL_IDENTIFICACION" ColumnName="CL_IDENTIFICACION" />
+          <ScalarProperty Name="CL_NOMBRES" ColumnName="CL_NOMBRES" />
+          <ScalarProperty Name="CL_TELEFONO" ColumnName="CL_TELEFONO" />
+          <ScalarProperty Name="CL_FECHA_NAC" ColumnName="CL_FECHA_NAC" />
+          <ScalarProperty Name="CL_GENERO" ColumnName="CL_GENERO" />
+          <ScalarProperty Name="CL_DIRECCION" ColumnName="CL_DIRECCION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CUERPO_FACTURA">
+      <EntityTypeMapping TypeName="FACTURACION_MYMModel.CUERPO_FACTURA">
+        <MappingFragment StoreEntitySet="CUERPO_FACTURA">
+          <ScalarProperty Name="CUE_COD" ColumnName="CUE_COD" />
+          <ScalarProperty Name="ENC_CODIGO" ColumnName="ENC_CODIGO" />
+          <ScalarProperty Name="PRO_COD" ColumnName="PRO_COD" />
+          <ScalarProperty Name="CUE_CANTIDAD" ColumnName="CUE_CANTIDAD" />
+          <ScalarProperty Name="CUE_VALORTOTAL" ColumnName="CUE_VALORTOTAL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ENCABEZADO_FACT">
+      <EntityTypeMapping TypeName="FACTURACION_MYMModel.ENCABEZADO_FACT">
+        <MappingFragment StoreEntitySet="ENCABEZADO_FACT">
+          <ScalarProperty Name="ENC_CODIGO" ColumnName="ENC_CODIGO" />
+          <ScalarProperty Name="CL_IDENTIFICACION" ColumnName="CL_IDENTIFICACION" />
+          <ScalarProperty Name="ENC_AUTORIZACION" ColumnName="ENC_AUTORIZACION" />
+          <ScalarProperty Name="ENC_CIUDAD" ColumnName="ENC_CIUDAD" />
+          <ScalarProperty Name="ENC_FORMAPAGO" ColumnName="ENC_FORMAPAGO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRODUCTO">
+      <EntityTypeMapping TypeName="FACTURACION_MYMModel.PRODUCTO">
+        <MappingFragment StoreEntitySet="PRODUCTO">
+          <ScalarProperty Name="PRO_COD" ColumnName="PRO_COD" />
+          <ScalarProperty Name="PRO_NOMBRE" ColumnName="PRO_NOMBRE" />
+          <ScalarProperty Name="PRO_SERIE" ColumnName="PRO_SERIE" />
+          <ScalarProperty Name="PRO_COSTO" ColumnName="PRO_COSTO" />
+          <ScalarProperty Name="PRO_PVP" ColumnName="PRO_PVP" />
+          <ScalarProperty Name="PRO_IMAGEN" ColumnName="PRO_IMAGEN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

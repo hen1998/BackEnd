@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FACTURACION_MYMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CLIENTE">
+    <Key>
+      <PropertyRef Name="CL_IDENTIFICACION" />
+    </Key>
+    <Property Name="CL_IDENTIFICACION" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="CL_NOMBRES" Type="char" MaxLength="50" Nullable="false" />
+    <Property Name="CL_TELEFONO" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="CL_FECHA_NAC" Type="datetime" Nullable="false" />
+    <Property Name="CL_GENERO" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="CL_DIRECCION" Type="char" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CUERPO_FACTURA">
+    <Key>
+      <PropertyRef Name="CUE_COD" />
+    </Key>
+    <Property Name="CUE_COD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ENC_CODIGO" Type="int" Nullable="false" />
+    <Property Name="PRO_COD" Type="int" Nullable="false" />
+    <Property Name="CUE_CANTIDAD" Type="int" Nullable="false" />
+    <Property Name="CUE_VALORTOTAL" Type="numeric" Precision="4" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ENCABEZADO_FACT">
+    <Key>
+      <PropertyRef Name="ENC_CODIGO" />
+    </Key>
+    <Property Name="ENC_CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CL_IDENTIFICACION" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="ENC_AUTORIZACION" Type="datetime" Nullable="false" />
+    <Property Name="ENC_CIUDAD" Type="char" MaxLength="25" Nullable="false" />
+    <Property Name="ENC_FORMAPAGO" Type="char" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PRODUCTO">
+    <Key>
+      <PropertyRef Name="PRO_COD" />
+    </Key>
+    <Property Name="PRO_COD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PRO_NOMBRE" Type="char" MaxLength="25" Nullable="false" />
+    <Property Name="PRO_SERIE" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="PRO_COSTO" Type="numeric" Precision="4" Scale="2" Nullable="false" />
+    <Property Name="PRO_PVP" Type="numeric" Precision="4" Scale="2" Nullable="false" />
+    <Property Name="PRO_IMAGEN" Type="varchar(max)" />
+  </EntityType>
+  <Association Name="FK_CUERPO_F_FACTURA_ENCABEZA">
+    <End Role="ENCABEZADO_FACT" Type="Self.ENCABEZADO_FACT" Multiplicity="1" />
+    <End Role="CUERPO_FACTURA" Type="Self.CUERPO_FACTURA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ENCABEZADO_FACT">
+        <PropertyRef Name="ENC_CODIGO" />
+      </Principal>
+      <Dependent Role="CUERPO_FACTURA">
+        <PropertyRef Name="ENC_CODIGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CUERPO_F_TIENE_PRO_PRODUCTO">
+    <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="1" />
+    <End Role="CUERPO_FACTURA" Type="Self.CUERPO_FACTURA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCTO">
+        <PropertyRef Name="PRO_COD" />
+      </Principal>
+      <Dependent Role="CUERPO_FACTURA">
+        <PropertyRef Name="PRO_COD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ENCABEZA_TIENE_FAC_CLIENTE">
+    <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1" />
+    <End Role="ENCABEZADO_FACT" Type="Self.ENCABEZADO_FACT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTE">
+        <PropertyRef Name="CL_IDENTIFICACION" />
+      </Principal>
+      <Dependent Role="ENCABEZADO_FACT">
+        <PropertyRef Name="CL_IDENTIFICACION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FACTURACION_MYMModelStoreContainer">
+    <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CUERPO_FACTURA" EntityType="Self.CUERPO_FACTURA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ENCABEZADO_FACT" EntityType="Self.ENCABEZADO_FACT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_CUERPO_F_FACTURA_ENCABEZA" Association="Self.FK_CUERPO_F_FACTURA_ENCABEZA">
+      <End Role="ENCABEZADO_FACT" EntitySet="ENCABEZADO_FACT" />
+      <End Role="CUERPO_FACTURA" EntitySet="CUERPO_FACTURA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CUERPO_F_TIENE_PRO_PRODUCTO" Association="Self.FK_CUERPO_F_TIENE_PRO_PRODUCTO">
+      <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+      <End Role="CUERPO_FACTURA" EntitySet="CUERPO_FACTURA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ENCABEZA_TIENE_FAC_CLIENTE" Association="Self.FK_ENCABEZA_TIENE_FAC_CLIENTE">
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+      <End Role="ENCABEZADO_FACT" EntitySet="ENCABEZADO_FACT" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

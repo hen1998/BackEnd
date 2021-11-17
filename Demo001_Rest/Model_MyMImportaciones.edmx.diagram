@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f9d2d8a7eec94202b8890916afeeb513" Name="Diagram1">
+        <EntityTypeShape EntityType="FACTURACION_MYMModel.CLIENTE" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="FACTURACION_MYMModel.CUERPO_FACTURA" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="FACTURACION_MYMModel.ENCABEZADO_FACT" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="FACTURACION_MYMModel.PRODUCTO" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <AssociationConnector Association="FACTURACION_MYMModel.FK_ENCABEZA_TIENE_FAC_CLIENTE" ManuallyRouted="false" />
+        <AssociationConnector Association="FACTURACION_MYMModel.FK_CUERPO_F_FACTURA_ENCABEZA" ManuallyRouted="false" />
+        <AssociationConnector Association="FACTURACION_MYMModel.FK_CUERPO_F_TIENE_PRO_PRODUCTO" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
